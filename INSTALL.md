@@ -7,7 +7,7 @@
     - 500MB EFI partition
     - 10-20GB root partition
     - rest dedicated to `/home`
-- Proceed until you reach Tasksel and <u>**o n l y**</u> install `SSH server` and `standard system utilities`
+- Proceed until you reach Tasksel and <ins>**o n l y**</ins> install `SSH server` and `standard system utilities`
 - Finish the installation process, reboot and login as root
 - Set a static IP for your server in `/etc/network/interfaces`:
     ```
