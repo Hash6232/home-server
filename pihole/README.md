@@ -1,0 +1,5 @@
+# pihole - `https://thinkcentre.home`
+
+This is where you'll set your local domain so that you don't have to add it manually on all of your devices. What you'll have to do though will be setting pihole as your primary and only DNS which sounds more complicated than adding a bunch of domains to your `hosts` file but the added benefit is that it comes with network level ad blocking so I'd argue that using pihole as DNS proxy is more benficial.
+
+After you log-in, navigate to `Settings > Local DNS Records` and add your domain and optionally your subdomains making sure you start with your base domain first. The end result will be displayed in alphabetical order anyway but by starting with a subdomain you'll make pihole save the values in that order in the `pihole.toml` hosts array as well leading to pihole resolving your local server IP using the first entry in the list which in this case would be your subdomain rather than your base domain. Since this is not ideal, it's confusing and it might probably lead to errors depending on how you'll configure your Caddy, you should pay attention to the order you register your domains with.

@@ -1,0 +1,9 @@
+services:
+  flexget:
+    image: lscr.io/linuxserver/flexget:3.13.0
+    container_name: flexget
+    env_file: .env
+    volumes:
+      - ./:/config/.flexget
+      - ./data:/data
+    restart: unless-stopped

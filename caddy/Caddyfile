@@ -1,0 +1,27 @@
+thinkcentre.home {
+        tls internal
+        redir / /admin
+        reverse_proxy pihole:80
+}
+
+*.thinkcentre.home {
+        tls internal
+
+        @servarr host servarr.thinkcentre.home
+        handle @servarr {
+                redir /autobrr /autobrr/
+                redir /prowlarr /prowlarr/
+
+                handle_path /autobrr/* {
+                        uri strip_prefix /autobrr
+                        reverse_proxy autobrr:7474
+                }
+
+                reverse_proxy /prowlarr/* prowlarr:9696
+        }
+
+        @torrent host torrent.thinkcentre.home
+        handle @torrent {
+                reverse_proxy qbittorrent:8081
+        }
+}

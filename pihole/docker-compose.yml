@@ -1,0 +1,17 @@
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    env_file: .env
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8080:80/tcp"
+    volumes:
+      - ./:/etc/pihole
+    restart: unless-stopped
+
+networks:
+  default:
+    name: caddy_net
+    external: true
