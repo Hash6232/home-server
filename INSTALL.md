@@ -111,7 +111,7 @@ Subsystem       sftp    /usr/lib/openssh/sftp-server
 Subsystem       sftp    internal-sftp
 ```
 
-Use the config files in the `ssh` directory in this repository as template
+Use the [config files](ssh/README.md) in the `ssh` directory in this repository as template
 
 ```sh
 # Finally restart the SSH server to load the new configuration
