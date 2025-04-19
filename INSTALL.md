@@ -59,6 +59,12 @@ Configure each `.env` and `docker-compose.yml` file the way you want. Most of th
 
 You install a service by navigating into their directory wiht `cd` and runnng `docker compose up -d`. To stop the entire stack of containers inside a docker-compose.yml file you can simply run `docker compose down` while inside the service directory.
 
+## DDNS and Wireguard
+
+DuckDNS has been my DDNS service of choice. It's main purpose is to automatically resolve a customizable URL so that it points to your main server public IP. The DuckDNS docker container will make sure to keep the domain synced to your public IP in case your ISP doesn't provide a static IP. In order to register to DuckDNS all you have to do is visit their [website](https://www.duckdns.org/), sign-in using on of the methods available, generate a subdomain of your choice and write it down along with your token which you'll be using in the `.env` file of the Wireguard's `docker-compose.yml`.
+
+Now all you have to do is to [expose the port](https://portforward.com/wireguard/) needed by Wireguard in your router and run the container stack.
+
 ## Media sharing
 
 ### SFTP - [Documentation](https://web.archive.org/web/20241114203204/https://www.turnkeylinux.org/docs/set-up-sftp-chroot-jail)
@@ -126,7 +132,3 @@ Append a new samba share to `/etc/samba/smb.conf`
    valid user = username
 ```
 Restart samba with `systemctl restart smbd` and access the directory with `\\server-ip\anameofyourchoice`.
-
-## DDNS and Wireguard
-
-TODO
