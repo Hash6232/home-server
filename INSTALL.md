@@ -98,6 +98,9 @@ chmod 700 /home/username/files
 usermod -d /home/username/files username
 ```
 
+> [!IMPORTANT]
+> In order for qBittorrent to be able to write inside my SFTP jail, I set the `/files` directory permissions to `701` so that processes can navigate through it and toward a directory of my choice. Said directory is owned by `username:docker` and has `775` permissions. Once qBittorrent starts saving files in there, they'll be owned by `docker:docker` but thanks to the fact that the umask in its `.env` file is set to `002` and to the fact my user is in the `docker` group, I can delete the files even when browsing the directory via SFTP.
+
 Replace the following default line in `/etc/ssh/sshd_config`
 
 ```
