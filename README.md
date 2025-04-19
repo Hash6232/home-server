@@ -14,9 +14,9 @@ This repository will roughly show the setup process I used for my own home serve
 
 ## Toolkit
 - **SSH**: A secure protocol for encrypted remote login and data transfer.
+- **Samba**: A file sharing service tailored for Windows clients.
 - **[ranger](https://github.com/ranger/ranger)**: A VIM-inspired filemanager for the console.
 - **[Docker](https://docs.docker.com/engine/install/debian/#install-using-the-repository)**: A containerization platform for services deployment.
-- **[Samba](https://wiki.debian.org/Samba/ServerSimple)**: A file sharing service tailored for Windows clients.
 
 ## Services
 - **[Caddy](https://caddyserver.com/)**: A reverse-proxy to pair each service to my local TLD.
