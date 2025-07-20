@@ -1,27 +1,43 @@
 thinkcentre.home {
-        tls internal
-        redir / /admin
-        reverse_proxy pihole:80
+	tls internal
+
+	respond "Hello from thinkcentre.home" 200
 }
 
 *.thinkcentre.home {
-        tls internal
+	tls internal
 
-        @servarr host servarr.thinkcentre.home
-        handle @servarr {
-                redir /autobrr /autobrr/
-                redir /prowlarr /prowlarr/
+	@searxng host search.thinkcentre.home
+	handle @searxng {
+		reverse_proxy searxng:8080
+	}
 
-                handle_path /autobrr/* {
-                        uri strip_prefix /autobrr
-                        reverse_proxy autobrr:7474
-                }
+	@pihole host pihole.thinkcentre.home
+	handle @pihole {
+		redir / /admin
+		reverse_proxy pihole:80
+	}
 
-                reverse_proxy /prowlarr/* prowlarr:9696
-        }
+	@servarr host servarr.thinkcentre.home
+	handle @servarr {
+		redir /autobrr /autobrr/
+		redir /prowlarr /prowlarr/
 
-        @torrent host torrent.thinkcentre.home
-        handle @torrent {
-                reverse_proxy qbittorrent:8081
-        }
+		handle_path /autobrr/* {
+			uri strip_prefix /autobrr
+			reverse_proxy autobrr:7474
+		}
+
+		reverse_proxy /prowlarr/* prowlarr:9696
+	}
+
+	@torrent host torrent.thinkcentre.home
+	handle @torrent {
+		reverse_proxy qbittorrent:8081
+	}
+
+	@manga host manga.thinkcentre.home
+	handle @manga {
+		reverse_proxy suwayomi:4567
+	}
 }
